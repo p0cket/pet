@@ -20,6 +20,7 @@ export const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({ thought, position 
           left: position.x + 90,
           top: position.y - 60,
           background: 'rgba(255, 255, 255, 0.95)',
+          color: '#2d3748',
           padding: '12px 16px',
           borderRadius: '20px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.15)',

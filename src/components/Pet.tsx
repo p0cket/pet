@@ -59,31 +59,29 @@ export const Pet: React.FC<PetProps> = ({ mood, activity, direction, position, o
   };
 
   return (
-    <motion.div
+    <div
       className="pet-container"
-      initial={{ x: position.x, y: position.y }}
-      animate={{
-        x: position.x,
-        y: position.y,
-        scaleX: direction === 'left' ? -1 : 1,
-        ...getAnimationVariant()
-      }}
-      transition={{
-        x: { duration: 2, ease: "easeInOut" },
-        y: { duration: 2, ease: "easeInOut" }
-      }}
       onClick={onClick}
       style={{
         position: 'absolute',
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transition: 'left 2s ease-in-out, top 2s ease-in-out',
         cursor: 'pointer',
         userSelect: 'none',
       }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
     >
-      <div style={{ fontSize: '80px', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }}>
+      <motion.div
+        animate={{
+          scaleX: direction === 'left' ? -1 : 1,
+          ...getAnimationVariant()
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        style={{ fontSize: '80px', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }}
+      >
         {getPetEmoji()}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
